@@ -23,10 +23,12 @@
   <!-- Vendor CSS Files -->
   <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
   <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
@@ -38,10 +40,8 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-
-
-<style>
-  /**
+  <style>
+    /**
 * Template Name: EstateAgency
 * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
 * Updated: Aug 09 2024 with Bootstrap v5.3.3
@@ -1764,12 +1764,7 @@ section,
 .starter-section {
   /* Add your styles here */
 }
-</style>
-
-
-
-
-
+  </style>
 
 </head>
 
@@ -1780,7 +1775,7 @@ section,
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="{% static 'assets/img/logo.png" alt=""> -->
+       <img src="{% static 'assets/img/logo.png' %}" alt=""> 
         <h1 class="sitename">Estate<span>Agency</span></h1>
       </a>
 
