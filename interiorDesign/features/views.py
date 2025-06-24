@@ -1,15 +1,17 @@
 from django.shortcuts import render
-from . models import Agent, Service, Hero_section
+from . models import Team, Service, Hero_section, Testimonial
 
 # Create your views here.
 def landing_page(request):
-    agents=Agent.objects.all()
+    teams=Team.objects.all()
     services=Service.objects.all()
     hero_section=Hero_section.objects.all()
+    testimonials=Testimonial.objects.all();
     context={
-        'agents': agents,
+        'teams': teams,
         'services':services,
-        'hero_section':hero_section
+        'hero_section':hero_section,
+        'testimonials':testimonials
     }
     return render(request,'index.html', context)
 

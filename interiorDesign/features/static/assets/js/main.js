@@ -1,3 +1,5 @@
+
+
 /**
 * Template Name: EstateAgency
 * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
@@ -70,20 +72,6 @@
     });
   }
 
-
-
- /**
-   * Initiate glightbox
-   */
- const glightbox = GLightbox({
-  selector: '.glightbox'
-});
-
-
-
-
-
-
   /**
    * Scroll top button
    */
@@ -119,6 +107,31 @@
   window.addEventListener('load', aosInit);
 
   /**
+   * Auto generate the carousel indicators
+   */
+  document.querySelectorAll('.carousel-indicators').forEach((carouselIndicator) => {
+    carouselIndicator.closest('.carousel').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
+      if (index === 0) {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}" class="active"></li>`;
+      } else {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}"></li>`;
+      }
+    });
+  });
+
+
+
+
+   /**
+   * Initiate glightbox
+   */
+ const glightbox = GLightbox({
+  selector: '.glightbox'
+});
+
+
+
+  /**
    * Init swiper sliders
    */
   function initSwiper() {
@@ -136,88 +149,6 @@
   }
 
   window.addEventListener("load", initSwiper);
-
-
-
-
-
-
-
-
-
- /**
-   * Auto generate the carousel indicators
-   */
- document.querySelectorAll('.carousel-indicators').forEach((carouselIndicator) => {
-  carouselIndicator.closest('.carousel').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
-    if (index === 0) {
-      carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}" class="active"></li>`;
-    } else {
-      carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}"></li>`;
-    }
-  });
-});
-
-
-
-
-
-
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
-
-
- /**
-   * Correct scrolling position upon page load for URLs containing hash links.
-   */
- window.addEventListener('load', function(e) {
-  if (window.location.hash) {
-    if (document.querySelector(window.location.hash)) {
-      setTimeout(() => {
-        let section = document.querySelector(window.location.hash);
-        let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-        window.scrollTo({
-          top: section.offsetTop - parseInt(scrollMarginTop),
-          behavior: 'smooth'
-        });
-      }, 100);
-    }
-  }
-});
-
-
-/**
-   * Animation on scroll function and init
-   */
-function aosInit() {
-  AOS.init({
-    duration: 600,
-    easing: 'ease-in-out',
-    once: true,
-    mirror: false
-  });
-}
-window.addEventListener('load', aosInit);
 
   /**
    * Initiate Pure Counter

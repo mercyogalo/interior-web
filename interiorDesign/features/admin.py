@@ -1,8 +1,9 @@
 from django.contrib import admin
-from . models import Agent, Service, Hero_section
+from . models import Team, Service, Hero_section, Testimonial
 
 # Register your models here.
 
-admin.site.register(Agent)
+admin.site.register(Team)
 admin.site.register(Service)
 admin.site.register(Hero_section)
+admin.site.register(Testimonial)
