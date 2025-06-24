@@ -29,6 +29,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet" />
+
   <!-- Main CSS File -->
   <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
 
@@ -499,6 +501,7 @@ h6 {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 15px;
+  color:var(--surface-color);
 }
 
 .footer .address p {
@@ -698,6 +701,8 @@ section,
   margin-bottom: 0;
 }
 
+
+
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
@@ -712,7 +717,6 @@ section,
   margin: 0;
   background-color: var(--background-color);
   position: relative;
-  overflow: hidden;
 }
 
 .hero img {
@@ -736,15 +740,22 @@ section,
 
 .hero .carousel-item:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 60%);
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
   position: absolute;
   inset: 0;
   z-index: 2;
 }
 
+.hero .carousel-item::before {
+  content: "";
+  background-color: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  inset: 0;
+}
+
 .hero .carousel-container {
   position: absolute;
-  inset: 90px 100px;
+  inset: 90px 64px 64px 64px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -752,21 +763,11 @@ section,
   z-index: 3;
 }
 
-@media (max-width: 575px) {
-  .hero .carousel-container {
-    inset: 90px 50px;
-  }
-}
-
 .hero h2 {
   margin-bottom: 30px;
-  font-size: 56px;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.hero h2 span {
-  color: var(--accent-color);
+  font-size: 48px;
+  font-weight: 700;
+  animation: fadeInDown 1s both;
 }
 
 @media (max-width: 768px) {
@@ -775,21 +776,30 @@ section,
   }
 }
 
+.hero p {
+  animation: fadeInDown 1s both 0.2s;
+}
+
+@media (min-width: 1024px) {
+
+  .hero h2,
+  .hero p {
+    max-width: 60%;
+  }
+}
+
 .hero .btn-get-started {
   color: var(--contrast-color);
-  font-family: var(--heading-font);
-  font-weight: 600;
-  font-size: 18px;
+  background: var(--accent-color);
+  font-weight: 400;
+  font-size: 15px;
   letter-spacing: 1px;
-  text-transform: uppercase;
   display: inline-block;
-  padding: 10px 40px;
-  border-radius: 50px;
+  padding: 8px 32px;
+  border-radius: 4px;
   transition: 0.5s;
-  margin: 10px 0;
-  align-self: flex-start;
-  flex-shrink: 0;
-  border: 2px solid var(--accent-color);
+  margin: 10px;
+  animation: fadeInUp 1s both 0.4s;
 }
 
 .hero .btn-get-started:hover {
@@ -801,7 +811,6 @@ section,
   width: 10%;
   transition: 0.3s;
   opacity: 0.5;
-  z-index: 3;
 }
 
 .hero .carousel-control-prev:focus,
@@ -835,37 +844,63 @@ section,
 
 .hero .carousel-indicators li {
   cursor: pointer;
-  opacity: 1;
-  height: 6px;
-  width: 20px;
-  transition: 0.3s;
-  padding: 0;
 }
 
-.hero .carousel-indicators .active {
-  background-color: var(--accent-color);
-  width: 40px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services .service-item {
-  background-color: var(--surface-color);
-  box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
-  padding: 60px 30px;
-  transition: all ease-in-out 0.3s;
-  border-radius: 18px;
-  border-bottom: 5px solid var(--surface-color);
-  height: 100%;
+.services .img {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.services .service-item .icon {
-  color: var(--contrast-color);
-  background: var(--accent-color);
+.services .img img {
+  transition: 0.6s;
+}
+
+.services .details {
+  background: color-mix(in srgb, var(--surface-color), transparent 5%);
+  padding: 50px 30px;
+  margin: -100px 30px 0 30px;
+  transition: all ease-in-out 0.3s;
+  position: relative;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 0 25px rgba(0, 0, 0, 0.1);
+}
+
+.services .details .icon {
   margin: 0;
-  width: 64px;
-  height: 64px;
+  width: 72px;
+  height: 72px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border: 6px solid var(--contrast-color);
   border-radius: 50px;
   display: flex;
   align-items: center;
@@ -873,195 +908,43 @@ section,
   margin-bottom: 20px;
   font-size: 28px;
   transition: ease-in-out 0.3s;
+  position: absolute;
+  top: -36px;
+  left: calc(50% - 36px);
 }
 
-.services .service-item h3 {
+.services .details h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
   transition: ease-in-out 0.3s;
 }
 
-.services .service-item p {
+.services .details p {
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
-@media (min-width: 1365px) {
-  .services .service-item:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-color);
-  }
-
-  .services .service-item:hover h3 {
-    color: var(--accent-color);
-  }
-}
-
-/*--------------------------------------------------------------
-# Agents Section
---------------------------------------------------------------*/
-.agents .member {
-  position: relative;
-}
-
-.agents .member .pic {
-  overflow: hidden;
-  margin-bottom: 50px;
-}
-
-.agents .member .member-info {
-  background-color: var(--surface-color);
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  bottom: -50px;
-  left: 20px;
-  right: 20px;
-  padding: 20px 15px;
-  overflow: hidden;
-  transition: 0.5s;
-}
-
-.agents .member h4 {
-  font-weight: 700;
-  margin-bottom: 10px;
-  font-size: 16px;
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.agents .member h4::after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 1px;
-  background: color-mix(in srgb, var(--default-color), transparent 60%);
-  bottom: 0;
-  left: 0;
-}
-
-.agents .member span {
-  font-style: italic;
-  display: block;
-  font-size: 13px;
-}
-
-.agents .member .social {
-  position: absolute;
-  right: 15px;
-  bottom: 15px;
-}
-
-.agents .member .social a {
-  transition: color 0.3s;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.agents .member .social a:hover {
+.services .service-item:hover .details h3 {
   color: var(--accent-color);
 }
 
-.agents .member .social i {
-  font-size: 16px;
-  margin: 0 2px;
+.services .service-item:hover .details .icon {
+  background: var(--surface-color);
+  border: 2px solid var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Testimonials Section
---------------------------------------------------------------*/
-.testimonials .testimonial-item {
-  background-color: var(--surface-color);
-  box-shadow: 0px 0 20px rgba(0, 0, 0, 0.1);
-  box-sizing: content-box;
-  padding: 30px;
-  margin: 40px 30px;
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  transition: 0.3s;
+.services .service-item:hover .details .icon i {
+  color: var(--accent-color);
 }
 
-.testimonials .testimonial-item .stars {
-  margin-bottom: 15px;
+.services .service-item:hover .img img {
+  transform: scale(1.2);
 }
 
-.testimonials .testimonial-item .stars i {
-  color: #ffc107;
-  margin: 0 1px;
-}
 
-.testimonials .testimonial-item .testimonial-img {
-  width: 90px;
-  border-radius: 50%;
-  border: 4px solid var(--background-color);
-  margin: 0 auto;
-}
-
-.testimonials .testimonial-item h3 {
-  font-size: 18px;
-  font-weight: bold;
-  margin: 10px 0 5px 0;
-}
-
-.testimonials .testimonial-item h4 {
-  font-size: 14px;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-  margin: 0;
-}
-
-.testimonials .testimonial-item p {
-  font-style: italic;
-  margin: 0 auto 15px auto;
-}
-
-.testimonials .swiper-wrapper {
-  height: auto;
-}
-
-.testimonials .swiper-pagination {
-  margin-top: 20px;
-  position: relative;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 85%);
-  opacity: 1;
-}
-
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
-  background-color: var(--accent-color);
-}
-
-.testimonials .swiper-slide {
-  opacity: 0.3;
-}
-
-@media (max-width: 1199px) {
-  .testimonials .swiper-slide-active {
-    opacity: 1;
-  }
-
-  .testimonials .swiper-pagination {
-    margin-top: 0;
-  }
-
-  .testimonials .testimonial-item {
-    margin: 40px 20px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .testimonials .swiper-slide-next {
-    opacity: 1;
-    transform: scale(1.12);
-  }
-}
 
 /*--------------------------------------------------------------
 # About Section
@@ -1244,139 +1127,7 @@ section,
   margin-bottom: 0;
 }
 
-/*--------------------------------------------------------------
-# Service Details Section
---------------------------------------------------------------*/
-.service-details .service-box {
-  background-color: var(--surface-color);
-  padding: 20px;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
-}
 
-.service-details .service-box+.service-box {
-  margin-top: 30px;
-}
-
-.service-details .service-box h4 {
-  font-size: 20px;
-  font-weight: 700;
-  border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 92%);
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-.service-details .services-list {
-  background-color: var(--surface-color);
-}
-
-.service-details .services-list a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
-  display: flex;
-  align-items: center;
-  padding: 12px 15px;
-  margin-top: 15px;
-  transition: 0.3s;
-}
-
-.service-details .services-list a:first-child {
-  margin-top: 0;
-}
-
-.service-details .services-list a i {
-  font-size: 16px;
-  margin-right: 8px;
-  color: var(--accent-color);
-}
-
-.service-details .services-list a.active {
-  color: var(--contrast-color);
-  background-color: var(--accent-color);
-}
-
-.service-details .services-list a.active i {
-  color: var(--contrast-color);
-}
-
-.service-details .services-list a:hover {
-  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
-  color: var(--accent-color);
-}
-
-.service-details .download-catalog a {
-  color: var(--default-color);
-  display: flex;
-  align-items: center;
-  padding: 10px 0;
-  transition: 0.3s;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.service-details .download-catalog a:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
-.service-details .download-catalog a:last-child {
-  padding-bottom: 0;
-}
-
-.service-details .download-catalog a i {
-  font-size: 24px;
-  margin-right: 8px;
-  color: var(--accent-color);
-}
-
-.service-details .download-catalog a:hover {
-  color: var(--accent-color);
-}
-
-.service-details .help-box {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  margin-top: 30px;
-  padding: 30px 15px;
-}
-
-.service-details .help-box .help-icon {
-  font-size: 48px;
-}
-
-.service-details .help-box h4,
-.service-details .help-box a {
-  color: var(--contrast-color);
-}
-
-.service-details .services-img {
-  margin-bottom: 20px;
-}
-
-.service-details h3 {
-  font-size: 26px;
-  font-weight: 700;
-}
-
-.service-details p {
-  font-size: 15px;
-}
-
-.service-details ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
-}
-
-.service-details ul li {
-  padding: 5px 0;
-  display: flex;
-  align-items: center;
-}
-
-.service-details ul i {
-  font-size: 20px;
-  margin-right: 8px;
-  color: var(--accent-color);
-}
 
 /*--------------------------------------------------------------
 # Contact Section
@@ -1759,6 +1510,227 @@ section,
   color: var(--accent-color);
 }
 
+
+
+
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials {
+  padding: 80px 0;
+  position: relative;
+}
+
+.testimonials:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.testimonials .testimonials-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.testimonials .container {
+  position: relative;
+  z-index: 3;
+}
+
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item {
+  text-align: center;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 6px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.testimonials .testimonial-item .stars {
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 50%);
+  opacity: 0.5;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--default-color);
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  .testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Team Section
+--------------------------------------------------------------*/
+.team {
+  --default-color: #ffffff;
+}
+
+.team .member {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.team .member img{
+  height:300px;
+}
+.team .member .member-info {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: 0.2s;
+}
+
+.team .member .member-info-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  transition: bottom 0.4s;
+}
+
+.team .member .member-info-content h4 {
+  color: var(--contrast-color);
+  font-weight: 700;
+  margin-bottom: 2px;
+  font-size: 18px;
+}
+
+.team .member .member-info-content span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+}
+
+.team .member .social {
+  position: absolute;
+  left: 0;
+  bottom: -38px;
+  right: 0;
+  height: 48px;
+  transition: bottom ease-in-out 0.4s;
+  text-align: center;
+}
+
+.team .member .social a {
+  transition: color 0.3s;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.team .member .social a:hover {
+  color: var(--default-color);
+}
+
+.team .member .social i {
+  font-size: 18px;
+  margin: 0 2px;
+}
+
+.team .member:hover .member-info {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
+  opacity: 1;
+  transition: 0.4s;
+}
+
+.team .member:hover .member-info-content {
+  bottom: 60px;
+  transition: bottom 0.4s;
+}
+
+.team .member:hover .social {
+  bottom: 0;
+  transition: bottom ease-in-out 0.4s;
+}
+
+
+
+
+
+
+
+
+
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
@@ -1776,7 +1748,7 @@ section,
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-       <img src="{% static 'assets/img/logo.png' %}" alt=""> 
+  <!--     <img src="{% static 'assets/img/logo.png' %}" alt=""> -->
         <h1 class="sitename">Estate<span>Agency</span></h1>
       </a>
 
@@ -1787,23 +1759,7 @@ section,
           <li><a href="services.html">Services</a></li>
           <li><a href="properties.html">Properties</a></li>
           <li><a href="agents.html">Agents</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-            <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
-            </ul>
-          </li>
+
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -1875,7 +1831,7 @@ section,
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    <!--     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
       </div>
     </div>
 
@@ -1893,6 +1849,7 @@ section,
   <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
   <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
   <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
   <!-- Main JS File -->
   <script src="{% static 'assets/js/main.js' %}"></script>
