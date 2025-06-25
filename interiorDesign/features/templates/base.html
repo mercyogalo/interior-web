@@ -753,7 +753,7 @@
     
     .hero .carousel-item:before {
       content: "";
-      background: color-mix(in srgb, var(--background-color), transparent 30%);
+      
       position: absolute;
       inset: 0;
       z-index: 2;
@@ -761,7 +761,7 @@
     
     .hero .carousel-item::before {
       content: "";
-      background-color: color-mix(in srgb, var(--background-color), transparent 30%);
+     
       position: absolute;
       inset: 0;
     }
@@ -1028,6 +1028,12 @@
     .about .about-images img {
       border-radius: 10px;
     }
+    .about .about-images .image-1{
+      height:540px;
+    }
+    .about .about-images .image-2{
+      height:250px;
+    }
     
     /*--------------------------------------------------------------
     # Stats Section
@@ -1236,7 +1242,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 25%, rgba(0, 0, 0, 0.9) 75%);
+      
       z-index: 2;
     }
     
@@ -1264,9 +1270,6 @@
       font-size: 15px;
       font-weight: 500;
       color: var(--contrast-color);
-      padding: 4px 20px;
-      border: 2px solid var(--accent-color);
-      border-radius: 50px;
       margin-bottom: 10px;
     }
     
@@ -1531,6 +1534,7 @@
     
     /*--------------------------------------------------------------
     # Testimonials Section
+    background: color-mix(in srgb, var(--background-color), transparent 30%);
     --------------------------------------------------------------*/
     .testimonials {
       padding: 80px 0;
@@ -1539,7 +1543,7 @@
     
     .testimonials:before {
       content: "";
-      background: color-mix(in srgb, var(--background-color), transparent 30%);
+      
       position: absolute;
       inset: 0;
       z-index: 2;

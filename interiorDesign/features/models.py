@@ -36,3 +36,10 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Portfolio(models.Model):
+    name=models.CharField(max_length=100)
+    image=models.ImageField(upload_to='portfolioImage/',default="image1.jpg")
+
+    def __str__(self):
+        return self.name

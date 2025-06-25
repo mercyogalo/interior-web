@@ -76,15 +76,15 @@
       <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
         <div class="row gy-4">
           <div class="col-lg-6">
-            <img src="{% static  'assets/img/about-company-1.jpg' %}" class="img-fluid" alt="">
+            <img src="{% static  'assets/img/about-1.jpeg' %}" class="img-fluid image-1" alt="">
           </div>
           <div class="col-lg-6">
             <div class="row gy-4">
               <div class="col-lg-12">
-                <img src="{% static  'assets/img/about-company-2.jpg' %}" class="img-fluid" alt="">
+                <img src="{% static  'assets/img/about-2.jpeg' %}" class="img-fluid image-2" alt="">
               </div>
               <div class="col-lg-12">
-                <img src="{% static  'assets/img/about-company-3.jpg' %}" class="img-fluid" alt="">
+                <img src="{% static  'assets/img/about-3.jpeg' %}" class="img-fluid image-2" alt="">
               </div>
             </div>
           </div>
@@ -182,73 +182,22 @@
 
     <div class="row gy-4">
 
+
+      {% for portfolio in portfolios %}
+
       <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
         <div class="card">
-          <img src="{% static  'assets/img/properties/property-1.jpg' %}" alt="" class="img-fluid">
+          <img src="{{portfolio.image.url}}" alt="" class="img-fluid">
           <div class="card-body">
-            <span class="sale-rent">Rent | $1200</span>
+            <span class="sale-rent">{{portfolio.name}}</span>
             <h3><a href="property-single.html" class="stretched-link">204 Mount Olive Road Two</a></h3>
            
           </div>
         </div>
       </div><!-- End Property Item -->
 
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="card">
-          <img src="{% static  'assets/img/properties/property-2.jpg' %}" alt="" class="img-fluid">
-          <div class="card-body">
-            <span class="sale-rent">Sale | $350.000</span>
-            <h3><a href="property-single.html" class="stretched-link">647 Molie Road</a></h3>
-           
-          </div>
-        </div>
-      </div><!-- End Property Item -->
+      {% endfor %}
 
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="card">
-          <img src="{% static  'assets/img/properties/property-3.jpg' %}" alt="" class="img-fluid">
-          <div class="card-body">
-            <span class="sale-rent">Sale | $580.000</span>
-            <h3><a href="property-single.html" class="stretched-link">711 Avenue Road</a></h3>
-            
-            
-
-          </div>
-        </div>
-      </div><!-- End Property Item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="card">
-          <img src="{% static  'assets/img/properties/property-4.jpg' %}" alt="" class="img-fluid">
-          <div class="card-body">
-            <span class="sale-rent">Rent | $6500</span>
-            <h3><a href="property-single.html" class="stretched-link">117 Milk Road</a></h3>
-           
-          </div>
-        </div>
-      </div><!-- End Property Item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-        <div class="card">
-          <img src="{% static  'assets/img/properties/property-5.jpg' %}" alt="" class="img-fluid">
-          <div class="card-body">
-            <span class="sale-rent">Rent | $3000</span>
-            <h3><a href="property-single.html" class="stretched-link">678 Broad Road</a></h3>
-            
-          </div>
-        </div>
-      </div><!-- End Property Item -->
-
-      <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-        <div class="card">
-          <img src="{% static  'assets/img/properties/property-6.jpg' %}" alt="" class="img-fluid">
-          <div class="card-body">
-            <span class="sale-rent">Sale | $650.000</span>
-            <h3><a href="property-single.html" class="stretched-link">974 Denim Road</a></h3>
-           
-          </div>
-        </div>
-      </div><!-- End Property Item -->
 
     </div>
 
