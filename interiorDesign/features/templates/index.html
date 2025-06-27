@@ -14,7 +14,7 @@
       <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
         <div class="carousel-item active">
-          <img src="{% static  'assets/img/carousel/hero-carousel-1.jpg' %}" alt="">
+          <img src="{% static  'assets/img/carousel/hero-1.jpeg' %}" alt="">
           <div class="carousel-container">
             <h2>Interior Design</h2>
             <p>Make the most or compact with space saving furniture that are igenous and innovative</p>
@@ -67,9 +67,21 @@
       <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
         <p class="who-we-are">Who We Are</p>
         <h3>Innovative Ideas Stylish Designs</h3>
-        <p class="fst-italic">
-          We make your dreams come true.Your interior is in our hands and all you have left is to enjoy!
+
+        <p class="">
+          At [Your Company Name], we specialize in residential interior design—creating beautiful, functional, and personalized homes across Kenya. Whether you're looking to refresh a single room or transform your entire space, our team blends creativity, practicality, and local inspiration to bring your vision to life.
         </p>
+
+        <p class="">
+          We believe a home should reflect who you are, support how you live, and inspire how you feel every day. From concept to completion, we’re with you every step of the way—offering expert design, thoughtful layout planning, custom styling, and realistic 3D visualizations.
+        </p>
+
+        <p class="">
+          The world needs innovators and problem solvers who turn challenges into greater opportunities.  WE have an insatiable curiosity about transformative trends challenging the status. 
+        </p>
+
+       
+
   
       </div>
 
@@ -174,7 +186,7 @@
    <!-- Section Title -->
    <div class="container section-title" data-aos="fade-up">
     <h2>Portfolio</h2>
-    <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    <p>Real spaces. Real results. Designed with heart</p>
   </div><!-- End Section Title -->
 
 
@@ -190,7 +202,7 @@
           <img src="{{portfolio.image.url}}" alt="" class="img-fluid">
           <div class="card-body">
             <span class="sale-rent">{{portfolio.name}}</span>
-            <h3><a href="property-single.html" class="stretched-link">204 Mount Olive Road Two</a></h3>
+            <h3><a class="stretched-link">{{portfolio.description}}</a></h3>
            
           </div>
         </div>
@@ -279,7 +291,7 @@
 <section id="team" class="team section">
   <div class="container section-title" data-aos="fade-up">
     <h2>Team</h2>
-    <p>Featured Services<br></p>
+    <p>Passionate designers and creatives dedicated to transforming your space into a home you love.<br></p>
   </div><!-- End Section Title -->
 
 

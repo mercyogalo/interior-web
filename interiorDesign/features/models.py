@@ -39,6 +39,7 @@ class Testimonial(models.Model):
     
 class Portfolio(models.Model):
     name=models.CharField(max_length=100)
+    description=models.CharField(max_length=200, default="Unique designs")
     image=models.ImageField(upload_to='portfolioImage/',default="image1.jpg")
 
     def __str__(self):
