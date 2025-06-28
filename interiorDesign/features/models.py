@@ -44,3 +44,9 @@ class Portfolio(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Message(models.Model):
+    name=models.CharField(max_length=200)
+    subject=models.CharField(max_length=400)
+    email=models.EmailField()
+    message=models.CharField(max_length=1000)
